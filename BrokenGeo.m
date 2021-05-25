@@ -1,6 +1,6 @@
 function [Tra1,cost_store1,comp] = BrokenGeo(Tra,Mean,cost_store,F,m,Q,eps)
-%UNTITLED7 Summary of this function goes here
-%   Detailed explanation goes here
+% Given a reverse geodesic Tra, mean trajectory Mean, and the one step cost cost_store for every step in Tra
+% BrokenGeo returns a complete path from H to G by truncating Tra and connecting it to Mean.
 
 G=Tra;
 C=cost_store;
