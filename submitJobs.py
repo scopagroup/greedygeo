@@ -6,7 +6,9 @@ import sys
 bdir = os.environ['WORK'] + "/code/greedygeo"
 
 # folder where the computed results are to be stored
-wdir = os.environ['SCRATCH'] + "/amang/results/greedytra"
+#wdir = os.environ['SCRATCH'] + "/amang/results/greedytra"
+wdir = os.environ['SCRATCH'] + "/ysu5/results/greedytra"
+
 
 #opt = setDefaultParameters('local');
 opt = setDefaultParameters('opuntia');

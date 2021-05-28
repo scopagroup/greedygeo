@@ -134,8 +134,8 @@ def createJobSubFile(cmd, opt):
     bash_file.write("#SBATCH -t " + opt['wtime_h'] + ":" + opt['wtime_m'] + ":00\n");
 
     # mail settings
-    bash_file.write("#SBATCH --mail-user=amang@uh.edu\n");
-#    bash_file.write("#SBATCH --mail-user=ysu3@uh.edu\n");
+#    bash_file.write("#SBATCH --mail-user=amang@uh.edu\n");
+    bash_file.write("#SBATCH --mail-user=ysu3@uh.edu\n");
     bash_file.write("#SBATCH --mail-type=begin\n");
     bash_file.write("#SBATCH --mail-type=end\n");
     bash_file.write("#SBATCH --mail-type=fail\n");
