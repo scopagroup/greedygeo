@@ -1,4 +1,5 @@
 function [BP,a1] = ParallelOneComp(PENSET,numcores,H,G,F,Q,m)
+
 % parallelize the computation of finding the best path from H to G on n=numcores nodes on one computer
 % BP is the best path, a1 is the cost of the best path.
 p = gcp();
@@ -26,7 +27,6 @@ end
 %toc
 minlist=zeros(numcores,2);
 for i=1:numcores
-    
     [a, b]= min(Results{i,5}(1:(Results{i,6}-1)));
     minlist(i,:)=[a b];
 end

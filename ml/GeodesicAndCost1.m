@@ -8,7 +8,7 @@ function [GEO,COST,GEO1,COST1,Total_cost,Count] = GeodesicAndCost1(H,G,PEN,F,Q,m
 
 %F is the growth vector, Q is the mutation matrix. m is the mutation rate.
 
-%GEO stores all the reverse geodesics. GEO1 stores all the completed reverse geodesic. 
+%GEO stores all the reverse geodesics. GEO1 stores all the completed reverse geodesic.
 
 %COST stores the one step cost of every step of every reverse geodesic
 
@@ -43,10 +43,10 @@ Count=1;
 for i=i:Leng
     y=PENSET(i,:);%y is the penultimate point
     [Tra,cost_store]=ReverseGeo(Y,y,F,m,Q,Compare);
-   
+
     if any(any(Tra))
         [Tra1,cost_store1,comp] = BrokenGeo(Tra,Mean,cost_store,F,m,Q,0.01);
-   
+
         GEO{Count}=Tra;
         COST{Count}=cost_store;
         GEO1{Count}=Tra1;
@@ -58,7 +58,5 @@ for i=i:Leng
         end
     end
 end
-end
-    
 
- 
+end

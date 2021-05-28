@@ -11,6 +11,7 @@ H=[0.8 0.05 0.05 0.05 0.05];
 G=[0.1 0.2 0.2 0.4 0.1];
 mesh=0.005;
 PEN=[0.05 0.2;0.1 0.3;0.1 0.3;0.3 0.4];
+
 PENSET=PENset(PEN,mesh);
 
 
@@ -28,6 +29,7 @@ tic
 fprintf('the best path from H to G is')
 geo1{b}(end:-1:1,:)
 toc
+
 tic
 numcores=10
 [BP,a1] = ParallelOneComp(PENSET,numcores,H,G,F,Q,m)
