@@ -41,4 +41,4 @@ for nodeID in range(1, numnodes+1):
     opt.setdefault('task', 'geo-node-' + str(nodeID) );
 
     # submit job to cluster
-#    submitJob( cmd, opt );
+    submitJob( cmd, opt );
