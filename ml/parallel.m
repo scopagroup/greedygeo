@@ -1,6 +1,6 @@
 clear all
 p = gcp();
-numcores = 10
+numcores = 8
 g=5;
 F=[200,200^1.08,200^1.1,200^1.11,200^1.12]; 
 Q=[0 0.25 0.25 0.25 0.25
@@ -12,15 +12,15 @@ Q=[0 0.25 0.25 0.25 0.25
 m=1/10^6;
 M=m*Q;
 H=[0.8 0.05 0.05 0.05 0.05];
-G=[0.1 0.1 0.2 0.5 0.1];
-
-PEN=[0.1 0.2;0.1 0.12;0.15 0.25;0.42 0.46];
-[sepPEN] = SepPEN(PEN, numcores);
-mesh=0.002;
+G=[0.1 0.1 0.1 0.6 0.1];
+mesh=0.003;
+PEN=[0.05 0.2;0.05 0.2;0.05 0.2;0.5 0.6];
+PENSET = PENset(PEN,mesh);
+[sepPEN] = SepPEN1(PENSET, numcores);
 
 % to request multiple evaluations, use a loop
 for idx = 1:numcores
-  f(idx) = parfeval(p,@GeodesicAndCost,6,H,G,sepPEN{idx},mesh,F,Q,m); % Square size determined by idx
+  f(idx) = parfeval(p,@GeodesicAndCost1,6,H,G,sepPEN{idx},F,Q,m); % Square size determined by idx
 end
 
 % collect the results as they become available.
@@ -47,3 +47,4 @@ end
 [a1, b1]=min(minlist(:,1));
 fprintf('the best path from H to G is\n')
 Results{b1,3}{minlist(b1,2)}(end:-1:1,:)
+
