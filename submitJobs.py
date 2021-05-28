@@ -34,7 +34,7 @@ for nodeID in range(1, numnodes+1):
     # construct command
     cmd = createCMD( nodeID, numnodes, opt );
     # uncomment line below to see command that is going to be submitted
-    # print(cmd);
+    print(cmd);
 
     # construct task name for job scheduler
     resetOption(opt, 'task');
