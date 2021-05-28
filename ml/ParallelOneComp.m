@@ -22,7 +22,7 @@ for idx = 1:numcores
   Results{completedIdx,4} = COST1;
   Results{completedIdx,5} = Total_cost;
   Results{completedIdx,6} = Count;
-  %fprintf('Got result with index: %d.\n', completedIdx);
+  fprintf('retrieved result with index: %d.\n', completedIdx);
 end
 %toc
 minlist=zeros(numcores,2);

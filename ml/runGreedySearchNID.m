@@ -1,4 +1,4 @@
-function runGreedySearchNID( nodeID, numnodes )
+function runGreedySearchNID( nodeID, numnodes, outdir )
 % RUNGREEDYSEARCHNID runs the greedy search on a single node and stores
 % result in mat-file
 %
@@ -24,10 +24,12 @@ PENSET=PENset(PEN,mesh);
 sepPEN = SepPEN1( PENSET, numnodes );
 
 % execute greedy search on one node (with 10 parallel procs)
+
+fprintf('executing search on node %d\n', nodeID);
 [BP, cost_BP] = ParallelOneComp(sepPEN{nodeID}, 10, H, G, F, Q, m );
 
 % construct file name for output
-resultname = ['result-for-node', num2str(nodeID) '.mat' ];
+resultname = [outdir,'/','result-for-node', num2str(nodeID) '.mat' ];
 
 % save to file
 save( resultname, 'BP', 'cost_BP' )

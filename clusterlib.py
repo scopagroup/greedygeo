@@ -13,7 +13,7 @@ def createCMD(nodeID,numnodes,opt):
     cmd = 'matlab -nodesktop -nodisplay -nosplash';
     cmd = cmd + ' -r \"setupML; runGreedySearchNID(';
     cmd = cmd + str(nodeID) + ',' + str(numnodes);
-    cmd = cmd + '\'); quit;\"'
+    cmd = cmd + ',\'' + outDir +'\'); quit;\"'
 #    cmd = cmd + ' > ' + outDir + '/log.txt'
     return cmd;
 
@@ -26,7 +26,7 @@ def createCMD(nodeID,numnodes,opt):
 def setDefaultParameters(compute_sys):
     if compute_sys == 'opuntia':
         num_nodes = 1;
-        mpi_pernode = 1;
+        mpi_pernode = 20;
     elif compute_sys == 'local':
         num_nodes = 1;
         mpi_pernode = 1;
@@ -134,8 +134,8 @@ def createJobSubFile(cmd, opt):
     bash_file.write("#SBATCH -t " + opt['wtime_h'] + ":" + opt['wtime_m'] + ":00\n");
 
     # mail settings
-    #bash_file.write("#SBATCH --mail-user=amang@uh.edu\n");
-    bash_file.write("#SBATCH --mail-user=ysu3@uh.edu\n");
+    bash_file.write("#SBATCH --mail-user=amang@uh.edu\n");
+#    bash_file.write("#SBATCH --mail-user=ysu3@uh.edu\n");
     bash_file.write("#SBATCH --mail-type=begin\n");
     bash_file.write("#SBATCH --mail-type=end\n");
     bash_file.write("#SBATCH --mail-type=fail\n");
@@ -166,7 +166,7 @@ def submitJob(cmd, opt):
     if opt['compute_sys'] == 'opuntia':
         bash_filename = createJobSubFile(cmd, opt);
         os.chdir(opt['output_directory']);
-        call(["sbatch", bash_filename]);
+#        call(["sbatch", bash_filename]);
         time.sleep(3);
     elif opt['compute_sys'] == 'local':
         os.chdir(opt['output_directory']);
