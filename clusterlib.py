@@ -166,7 +166,7 @@ def submitJob(cmd, opt):
     if opt['compute_sys'] == 'opuntia':
         bash_filename = createJobSubFile(cmd, opt);
         os.chdir(opt['output_directory']);
-#        call(["sbatch", bash_filename]);
+        call(["sbatch", bash_filename]);
         time.sleep(3);
     elif opt['compute_sys'] == 'local':
         os.chdir(opt['output_directory']);
