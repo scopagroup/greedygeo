@@ -7,13 +7,13 @@ from subprocess import call
 ##########################################################################
 # create command
 ##########################################################################
-def createCMD(ids,ide,length,opt):
+def createCMD(nodeID,numnodes,opt):
     outDir = opt['output_directory'];
 
     cmd = 'matlab -nodesktop -nodisplay -nosplash';
-    cmd = cmd + ' -r \"isetup; genTrajectoriesSubset(';
-    cmd = cmd + str(ids) + ',' + str(ide) + ',' + str(length);
-    cmd = cmd + ',\'' + outDir +'\'); quit;\"'
+    cmd = cmd + ' -r \"setupML; runGreedySearchNID(';
+    cmd = cmd + str(nodeID) + ',' + str(numnodes);
+    cmd = cmd + '\'); quit;\"'
 #    cmd = cmd + ' > ' + outDir + '/log.txt'
     return cmd;
 

@@ -2,11 +2,12 @@ from clusterlib import *
 import os
 import sys
 
-bdir = os.environ['WORK'] + "/code"
-wdir = os.environ['SCRATCH'] + "/trajres"
+bdir = os.environ['WORK'] + "/code/greedygeo"
+# wdir = os.environ['SCRATCH']
+wdir = os.environ['WORK'] + "/code/greedygeo"
 
 #opt = setDefaultParameters('local');
-opt = setDefaultParameters('opuntia');
+opt = setDefaultParameters('local');
 
 resetOption(opt,'output_directory');
 opt.setdefault('output_directory', wdir);
@@ -16,27 +17,21 @@ opt.setdefault('code_directory', bdir);
 
 
 # make output directory
-if not os.path.exists(wdir):
-    os.makedirs(wdir);
-else:
-    print("results already computed: ", wdir)
+#if not os.path.exists(wdir):
+#    os.makedirs(wdir);
+#else:
+#    print("results already computed: ", wdir)
 #    quit(); # if already computed, go home
 
+numnodes = 2;
 
-Num     = 50000000; # total number of trajectories
-NumPerC = 1000000;  # number of trajectories per compute node
-length  = 10;
+for nodeID in range( 1, numnodes):
 
-for i in range( 1, Num, NumPerC):
-
-    ids = i;
-    ide = i+NumPerC - 1;
-
-    cmd = createCMD( ids, ide, length, opt );
+    cmd = createCMD( nodeID, numnodes, opt );
 
 
     resetOption(opt, 'task');
-    opt.setdefault('task', 'trj' + str(ids) + '-' + str(ide) );
+    opt.setdefault('task', 'geo-node-' + str(nodeID) );
 
 #    print(cmd);
     submitJob( cmd, opt );
