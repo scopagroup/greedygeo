@@ -30,7 +30,7 @@ sepPEN = SepPEN1( PENSET, numnodes );
 % execute greedy search on one node (with 10 parallel procs)
 
 fprintf('executing search on node %d\n', nodeID);
-[BP, cost_BP] = ParallelOneComp(sepPEN{nodeID}, 10, H, G, F, Q, m );
+[BP, cost_BP] = ParallelOneComp(sepPEN{nodeID}, 20, H, G, F, Q, m );
 
 % construct file name for output
 resultname = [outdir,'/','result-for-node', num2str(nodeID) '.mat' ];
