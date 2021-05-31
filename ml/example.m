@@ -19,7 +19,7 @@ PEN=[0.1 0.2;0.1 0.12;0.15 0.25;0.42 0.46];
 PENSET=PENset(PEN,mesh);
 tic
 numcores=10
-[BP,a1，CC] = ParallelOneComp(PENSET,numcores,H,G,F,Q,m)
+[BP,a1,CC] = ParallelOneComp(PENSET,numcores,H,G,F,Q,m)
 toc
 
 %[GEO COST GEO1 COST1 COSTT C] = GeodesicAndCost1(H,G,PENSET,F,Q,m);
