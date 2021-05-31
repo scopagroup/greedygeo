@@ -27,7 +27,7 @@ PEN=[0.1 0.2;0.1 0.12;0.15 0.25;0.42 0.46];
 tic
 PENSET=PENset(PEN,mesh);
 sepPEN = SepPEN1( PENSET, numnodes );
-C = size(sepPEN{nodeid},1);
+C = size(sepPEN{nodeID},1);
 % execute greedy search on one node (with 10 parallel procs)
 
 fprintf('executing search on node %d\n', nodeID);
