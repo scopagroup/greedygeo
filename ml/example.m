@@ -17,16 +17,16 @@ mesh=0.001;
 PEN=[0.1 0.2;0.1 0.12;0.15 0.25;0.42 0.46];
 
 PENSET=PENset(PEN,mesh);
-%tic
-%numcores=10
-%[BP,a1] = ParallelOneComp(PENSET,numcores,H,G,F,Q,m)
-%toc
-
-[GEO COST GEO1 COST1 COSTT C] = GeodesicAndCost1(H,G,PENSET,F,Q,m);
+tic
+numcores=10
+[BP,a1，CC] = ParallelOneComp(PENSET,numcores,H,G,F,Q,m)
 toc
-[a b]=min(COSTT(1:C-1))
-fprintf('the best path from H to G is')
-GEO1{b}(end:-1:1,:)
+
+%[GEO COST GEO1 COST1 COSTT C] = GeodesicAndCost1(H,G,PENSET,F,Q,m);
+%toc
+%[a b]=min(COSTT(1:C-1))
+%fprintf('the best path from H to G is')
+%GEO1{b}(end:-1:1,:)
 
 %tic
 %[geo cost geo1 cost1 COST c] = GeodesicAndCost(H,G,PEN,mesh,F,Q,m);
