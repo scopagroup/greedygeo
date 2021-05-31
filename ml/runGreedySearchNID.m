@@ -32,12 +32,12 @@ C = size(sepPEN{nodeid},1);
 
 fprintf('executing search on node %d\n', nodeID);
 [BP, cost_BP,Count] = ParallelOneComp(sepPEN{nodeID}, 10, H, G, F, Q, m );
-time=toc;
+time=toc
 % construct file name for output
 resultname = [outdir,'/','result-for-node', num2str(nodeID) '.mat' ];
 
 % save to file
-save( resultname, 'BP', 'cost_BP', 'C', 'Count')
+save( resultname, 'BP', 'cost_BP', 'C', 'Count', 'time')
 
 
 
