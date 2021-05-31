@@ -1,4 +1,4 @@
-function [BP,a1] = ParallelOneComp(PENSET,numcores,H,G,F,Q,m)
+function [BP,a1,CC] = ParallelOneComp(PENSET,numcores,H,G,F,Q,m)
 
 % parallelize the computation of finding the best path from H to G on n=numcores nodes on one computer
 % BP is the best path, a1 is the cost of the best path.
@@ -12,6 +12,7 @@ end
 
 % collect the results as they become available.
 Results = cell(numcores,5);
+CC=0;
 %tic
 for idx = 1:numcores
   % fetchNext blocks until next results are available.
@@ -22,6 +23,7 @@ for idx = 1:numcores
   Results{completedIdx,4} = COST1;
   Results{completedIdx,5} = Total_cost;
   Results{completedIdx,6} = Count;
+  CC=CC+Count;
   fprintf('retrieved result with index: %d.\n', completedIdx);
 end
 %toc
