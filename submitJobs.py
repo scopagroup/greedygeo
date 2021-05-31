@@ -27,7 +27,7 @@ opt.setdefault('code_directory', bdir);
 #    print("results already computed: ", wdir)
 #    quit(); # if already computed, go home
 
-numnodes = 20;
+numnodes = 10;
 
 for nodeID in range(1, numnodes+1):
 
