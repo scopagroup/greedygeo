@@ -24,18 +24,19 @@ PEN=[0.1 0.2;0.1 0.12;0.15 0.25;0.42 0.46];
 %PEN=[0.05 0.2;0.1 0.3;0.1 0.3;0.3 0.4];
 
 %  construct the subsets of the search grid for the greedy algorithm
+tic
 PENSET=PENset(PEN,mesh);
 sepPEN = SepPEN1( PENSET, numnodes );
-
+C = size(sepPEN{nodeid},1);
 % execute greedy search on one node (with 10 parallel procs)
 
 fprintf('executing search on node %d\n', nodeID);
-[BP, cost_BP] = ParallelOneComp(sepPEN{nodeID}, 10, H, G, F, Q, m );
-
+[BP, cost_BP,Count] = ParallelOneComp(sepPEN{nodeID}, 10, H, G, F, Q, m );
+time=toc;
 % construct file name for output
 resultname = [outdir,'/','result-for-node', num2str(nodeID) '.mat' ];
 
 % save to file
-save( resultname, 'BP', 'cost_BP' )
+save( resultname, 'BP', 'cost_BP', 'C', 'Count')
 
 end
