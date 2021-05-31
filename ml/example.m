@@ -21,12 +21,12 @@ tic
 numcores=10
 [BP,a1,CC] = ParallelOneComp(PENSET,numcores,H,G,F,Q,m)
 toc
-
-%[GEO COST GEO1 COST1 COSTT C] = GeodesicAndCost1(H,G,PENSET,F,Q,m);
-%toc
-%[a b]=min(COSTT(1:C-1))
-%fprintf('the best path from H to G is')
-%GEO1{b}(end:-1:1,:)
+tic
+[GEO COST GEO1 COST1 COSTT C] = GeodesicAndCost1(H,G,PENSET,F,Q,m);
+toc
+[a b]=min(COSTT(1:C-1))
+fprintf('the best path from H to G is')
+GEO1{b}(end:-1:1,:)
 
 %tic
 %[geo cost geo1 cost1 COST c] = GeodesicAndCost(H,G,PEN,mesh,F,Q,m);
