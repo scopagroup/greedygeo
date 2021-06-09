@@ -38,7 +38,7 @@ tic
        
 sepTAR = SepTAR( TARSET, numnodes );     
        
-[Results] = ParallelOnTar(sepTAR{nodeID},10,H,F,Q,m,mesh);
+[Results] = ParallelOnTar(sepTAR{nodeID},12,H,F,Q,m,mesh);
     
 time=toc
 resultname = [outdir,'/','F1-result-for-node', num2str(nodeID) '.mat' ];
