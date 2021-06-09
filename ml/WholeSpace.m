@@ -1,7 +1,7 @@
-function [Whole] = WholeSpace(H,mesh)
+function [Whole] = WholeSpace(G,mesh)
 % this function returns all the penultimate histograms by using mesh to
 % discretize PEN.
-g=size(H,2);
+g=size(G,2);
 sets=cell(1,g-1);
 Leng=1;
 
