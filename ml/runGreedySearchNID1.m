@@ -41,7 +41,7 @@ sepTAR = SepTAR( TARSET, numnodes );
 [Results] = ParallelOnTar(sepTAR{nodeID},10,H,F,Q,m,mesh);
     
 time=toc
-resultname = [outdir,'/','F6-result-for-node', num2str(nodeID) '.mat' ];
+resultname = [outdir,'/','F1-result-for-node', num2str(nodeID) '.mat' ];
 
 % save to file
 save( resultname, 'Results','F', 'H', 'time')
