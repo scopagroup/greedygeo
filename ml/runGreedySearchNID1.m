@@ -7,18 +7,32 @@ function runGreedySearchNID1( nodeID, numnodes, outdir )
 %   nodeID      id of particular node
 
 % setup for problem
-g=3;
+%g=3;
+%opt=setup(g);
+%F=opt.F;
+%Q=opt.Q;
+%m=opt.m;
+%M=m*Q;
+%delta=0.02;
+%TAR=[0.05 0.5;0.2 0.7];
+%[TARSET] = TarSet(TAR,delta);
+%H=[0.99, 0.005,0.005];
+%mesh=0.001;
+%fprintf('executing search on node %d\n', nodeID);
+
+g=4;
 opt=setup(g);
 F=opt.F;
 Q=opt.Q;
 m=opt.m;
 M=m*Q;
-delta=0.02;
-TAR=[0.05 0.5;0.2 0.7];
+delta=0.05;
+TAR=[0.05 0.5;0.2 0.7;0.2 0.7];
 [TARSET] = TarSet(TAR,delta);
-H=[0.99, 0.005,0.005];
+H=[0.9, 1/30, 1/30, 1/30];
 mesh=0.001;
-fprintf('executing search on node %d\n', nodeID);
+
+
 tic
         
        
