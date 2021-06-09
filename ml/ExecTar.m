@@ -18,11 +18,11 @@ function ExecTar( nodeid, numnodes )
         %PENSET=PENset(PEN,mesh);
         sepTAR = SepTAR( TARSET, numnodes );     
        
-        [Results] = ParallelOnTar(sepTAR{nodeid},6,H,F,Q,m,mesh);
+        [Results] = ParallelOnTar(sepTAR{nodeid},6,H,F,Q,m,mesh)
     
         time=toc
-        resultname = ['result-for-Target-nodelocal-', num2str(nodeid) '.mat' ];
+        %resultname = ['result-for-Target-nodelocal-', num2str(nodeid) '.mat' ];
 
-        save( resultname, 'Results','time','F')
+        %save( resultname, 'Results','time','F')
 
 end
