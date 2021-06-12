@@ -33,7 +33,7 @@ time=toc
 resultname = [outdir,'/','Task1-result-for-node', num2str(nodeID) '.mat' ];
 
 % save to file
-save( resultname, 'Results','F', 'H', 'time')
+save( resultname, 'Results','F', 'time')
 
 
 
