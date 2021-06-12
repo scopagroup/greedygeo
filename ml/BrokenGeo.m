@@ -27,8 +27,8 @@ else
         Tra1=[G(1:I,:);Mean(J,:)];
         cost_store1=[C(1:I);comp];
     else
-        Tra1=[];
-        cost_store1=[];
+        Tra1=[G(1:I,:);Mean(J,:)];
+        cost_store1=[C(1:I);100];
     end
 end
 end
