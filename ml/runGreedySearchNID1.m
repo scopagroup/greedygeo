@@ -8,7 +8,7 @@ function runGreedySearchNID1( nodeID, numnodes, outdir )
 
 % setup for problem
  load HGpair.mat TAR
- load CaompareTask1.mat Compare
+ load CompareTask1.mat Compare
  %Compare=ones(400,2)*0.3;
  g=3;
  opt=setup(g);
