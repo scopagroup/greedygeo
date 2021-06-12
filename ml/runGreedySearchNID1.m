@@ -7,41 +7,30 @@ function runGreedySearchNID1( nodeID, numnodes, outdir )
 %   nodeID      id of particular node
 
 % setup for problem
-%g=3;
-%opt=setup(g);
-%F=opt.F;
-%Q=opt.Q;
-%m=opt.m;
-%M=m*Q;
-%delta=0.02;
-%TAR=[0.05 0.5;0.2 0.7];
-%[TARSET] = TarSet(TAR,delta);
-%H=[0.99, 0.005,0.005];
-%mesh=0.001;
-%fprintf('executing search on node %d\n', nodeID);
-
-g=4;
-opt=setup(g);
-F=opt.F;
-Q=opt.Q;
-m=opt.m;
-M=m*Q;
-delta=0.05;
-TAR=[0.05 0.5;0.2 0.7;0.2 0.7];
-[TARSET] = TarSet(TAR,delta);
-H=[0.9, 1/30, 1/30, 1/30];
-mesh=0.001;
-
-
+ load HGpair.mat TAR
+ %load CaompareTask1.mat Compare
+ Compare=ones(400,2)*0.3;
+ g=3;
+ opt=setup(g);
+ F=opt.F;
+ Q=opt.Q;
+ m=opt.m;
+ M=m*Q;
+ mesh=0.01;
+ tic
+        
+ sepTAR = SepTAR( TAR, numnodes ); 
+ sepCom= SepTAR(Compare,numnodes);
+fprintf('executing search on node %d\n', nodeID);
 tic
         
        
-sepTAR = SepTAR( TARSET, numnodes );     
+    
        
-[Results] = ParallelOnTar(sepTAR{nodeID},12,H,F,Q,m,mesh);
+[Results] = ParallelOnTar(sepTAR{nodeID},6,H,F,Q,m,mesh,sepCom{nodeID});
     
 time=toc
-resultname = [outdir,'/','F1-result-for-node', num2str(nodeID) '.mat' ];
+resultname = [outdir,'/','Task1-result-for-node', num2str(nodeID) '.mat' ];
 
 % save to file
 save( resultname, 'Results','F', 'H', 'time')
