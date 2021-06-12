@@ -38,11 +38,11 @@ COST1=cell(1,Leng);
 Total_cost=zeros(1,Leng);
 
 Y=G;
-Compare=C;
+compare=C;
 Count=1;
-for i=i:Leng
+for i=1:Leng
     y=PENSET(i,:);%y is the penultimate point
-    [Tra,cost_store]=ReverseGeo1(Y,y,F,m,Q,Compare);
+    [Tra,cost_store]=ReverseGeo1(Y,y,F,m,Q,compare);
    
     if any(any(Tra))
         [Tra1,cost_store1,comp] = BrokenGeo(Tra,Mean,cost_store,F,m,Q,0.01);
@@ -54,9 +54,10 @@ for i=i:Leng
         Total_cost(Count)=comp;
         Count=Count+1;
         if rem(Count,100)==0
-            Compare=min(Total_cost(1:Count-1));
+            compare=min(Total_cost(1:Count-1));
         end
     end
+    
 end
 end
     
