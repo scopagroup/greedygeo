@@ -15,7 +15,7 @@ store=y;
 y=OneStepGeo(y,z,m,Q,F);
 cc=OneStepCost(y,store,F,m,Q);
 Flag=1;
-while min(y)>0.001 && max(y)<1 && cc>0 && sum(cost_store)< Compare
+while min(y)>0.001 && max(y)<1 && cc>0 %&& sum(cost_store)< Compare
     len=len+1;
     Tra(len,:)=y;
     cost_store(len)=cc;
