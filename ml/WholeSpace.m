@@ -6,15 +6,15 @@ sets=cell(1,g-1);
 Leng=1;
 
 for i=1:g-1
-    sets{i}=min(G(i)+0.25,0.95):-mesh:max(G(i)-0.25,0.05);;
+    sets{i}=min(G(i)+0.5,0.99):-mesh:max(G(i)-0.5,0.01);
     Leng=Leng* size(sets{i},2);
     
 end
-PENSET=zeros(Leng,g);
+
 c = cell(1, numel(sets));
 [c{:}] = ndgrid( sets{:} );
 result = cell2mat( cellfun(@(v)v(:), c, 'UniformOutput',false) );
-rrr=result(find(sum(result,2)<0.95),:);
+rrr=result(sum(result,2)<0.95,:);
 y=1-sum(rrr,2);
 Whole= [rrr y];
 
