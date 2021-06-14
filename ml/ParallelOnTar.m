@@ -26,7 +26,5 @@ for idx = 1:numcores
   
   %fprintf('Got result with index: %d.\n', completedIdx);
 end
-%toc
-
 end
 
