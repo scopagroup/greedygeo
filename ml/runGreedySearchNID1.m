@@ -17,7 +17,7 @@ function runGreedySearchNID1( nodeID, numnodes, outdir )
  Q=opt.Q;
  m=opt.m;
  M=m*Q;
- mesh=0.01;
+ mesh=0.001;
  tic
         
  sepTAR = SepTAR( TAR, numnodes ); 
@@ -31,7 +31,7 @@ tic
 [Results] = ParallelOnTar(sepTAR{nodeID},10,F,Q,m,mesh,sepCom{nodeID});
     
 time=toc
-resultname = [outdir,'/','Task1-result-for-node', num2str(nodeID) '.mat' ];
+resultname = [outdir,'/','Task2-result-for-node', num2str(nodeID) '.mat' ];
 
 % save to file
 save( resultname, 'Results','F', 'time')
