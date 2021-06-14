@@ -8,7 +8,7 @@ for i=1:size(Whole,1)
     end
 end
 else
-    PENset=Whole(vecnorm(Whole-G, Inf, 2)<=c,:);
+    PENset=Whole(vecnorm(Whole-G, Inf, 2)<=1.1*c,:);
 end
     
 
