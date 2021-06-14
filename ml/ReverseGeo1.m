@@ -19,10 +19,10 @@ while min(y)>0.001 && max(y)<1 && cc>0 && sum(cost_store)< Compare
     len=len+1;
     Tra(len,:)=y;
     cost_store(len)=cc;
-    %if len==3 && sum(cost_store)>Compare
-    %    Flag=0;
-    %    break;
-    %end
+   % if len==3 && sum(cost_store)>Compare
+   %     Flag=0;
+   %     break;
+   % end
     z=store;
     store=y;
     y=OneStepGeo(y,z,m,Q,F);
