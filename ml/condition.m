@@ -5,10 +5,11 @@ function [flag] = condition(Mean,geo,F,Q,m, eps)
 % if a=1, norm(Mean_b,geo_c) is the samllest value
 % if a=0, C(Mean_b,geo_c) is the smallest value
 K=size(geo,1);
-dist=zeros(15,K);
+L=size(Mean,1);
+dist=zeros(L,K);
 %CC=zeros(15,K);
 M=m*Q;
-for i=1:15
+for i=1:L
     for j=1:K
         dist(i,j)=norm(Mean(i,:)-geo(j,:));
         %CC(i,j)=cost_function(Mean(i,:),geo(j,:),F,M);
@@ -21,17 +22,19 @@ end
 if c<eps
     flag=[1 b(d) d];
 else
-    CC=zeros(15,K);
-    for i=1:15
+    CC=zeros(L,K);
+    for i=1:L
         for j=1:K
             CC(i,j)=OneStepCost(Mean(i,:),geo(j,:),F,m,Q);
+            if CC(i,j)==0
+                CC(i,j)=100;
+            end
         end
     end
-            
+       
     [a1 b1]=min(CC);
     [c1 d1]=min(a1);
     flag=[0 b1(d1) d1];
 end
-    
 end
 
