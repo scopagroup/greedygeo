@@ -8,7 +8,7 @@ comp=100;
 [flag] = condition(Mean,G,F,Q,m, eps);
 if flag(1)==1 || flag(2)==1
     J=flag(2);
-    for j=min(flag(3)+1,size(G,1)):-1:max(1,flag(3)-1)
+    for j=min(flag(3)+2,size(G,1)):-1:max(1,flag(3)-2)
         
         C1=sum(C(1:j))+OneStepCost(Mean(J,:),G(j,:),F,m,Q);
         if C1<comp && C1>0
