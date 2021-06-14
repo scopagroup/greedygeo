@@ -27,8 +27,15 @@ Mean=zeros(15,g);
 Mean(1,:)=H;
 for i=2:15
     [HH]= mean_trajectory(HH,F,m,Q);
-    Mean(i,:)=HH;
+    if min(HH)>0.005
+       Mean(i,:)=HH;
+    else
+        Mean=Mean(1:i-1,:);
+        break;
+    end
 end
+
+    
 PENSET=PEN;
 Leng=size(PENSET,1);
 GEO=cell(1,Leng);
@@ -46,16 +53,18 @@ for i=1:Leng
    
     if any(any(Tra))
         [Tra1,cost_store1,comp] = BrokenGeo(Tra,Mean,cost_store,F,m,Q,0.01);
-   
+        
         GEO{Count}=Tra;
         COST{Count}=cost_store;
         GEO1{Count}=Tra1;
         COST1{Count}=cost_store1;
         Total_cost(Count)=comp;
         Count=Count+1;
+        
         if rem(Count,100)==0
             compare=min(Total_cost(1:Count-1));
         end
+       
     end
     
 end
