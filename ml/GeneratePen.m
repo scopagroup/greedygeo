@@ -7,10 +7,20 @@ for i=1:size(Whole,1)
         PENset=[PENset; Whole(i,:)];
     end
 end
-else
+elseif I==1
     PENset=Whole(vecnorm(Whole-G, Inf, 2)<=1.5*c,:);
+
+else
+    l=size(Whole,1);
+    LG=zeros(1,l);
+    for i=1:l
+        LG(i)=OneStepCost(Whole(i,:),G,F,m,Q);
+    end
+    Quan=quantile(LG,c);
+    LL=find(LG<Quan & LG>0);
+    PENset=Whole(LL,:);
+        
 end
-    
 
 
 end
