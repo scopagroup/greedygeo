@@ -18,7 +18,7 @@ function runGreedySearchNID1( nodeID, numnodes, outdir )
  Q=opt.Q;
  m=opt.m;
  M=m*Q;
- mesh=0.01;
+ mesh=0.005;
  tic
         
  sepTAR = SepTAR( TAR, numnodes ); 
