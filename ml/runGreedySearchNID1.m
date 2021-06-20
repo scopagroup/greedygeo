@@ -12,13 +12,13 @@ function runGreedySearchNID1( nodeID, numnodes, outdir )
  %load CompareTask1.mat Compare1
  %Compare=Compare1;
  Compare=ones(60,3)*0.75;
- g=3;
+ g=5;
  opt=setup(g);
  F=opt.F;
  Q=opt.Q;
  m=opt.m;
  M=m*Q;
- mesh=0.005;
+ mesh=0.01;
  tic
         
  sepTAR = SepTAR( TAR, numnodes ); 
