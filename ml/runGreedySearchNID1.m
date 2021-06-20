@@ -29,7 +29,7 @@ tic
        
     
        
-[Results] = ParallelOnTar(sepTAR{nodeID},6,F,Q,m,mesh,sepCom{nodeID});
+[Results] = ParallelOnTar(sepTAR{nodeID},10,F,Q,m,mesh,sepCom{nodeID});
     
 time=toc
 resultname = [outdir,'/','Quan1dim4-result-for-node', num2str(nodeID) '.mat' ];
