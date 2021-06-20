@@ -11,7 +11,7 @@ function runGreedySearchNID1( nodeID, numnodes, outdir )
  %TAR=TAR(1:100,:);
  %load CompareTask1.mat Compare1
  %Compare=Compare1;
- Compare=ones(100,3)*1;
+ Compare=ones(400,3)*1;
  g=3;
  opt=setup(g);
  F=opt.F;
