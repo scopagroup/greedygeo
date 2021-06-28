@@ -8,6 +8,7 @@ function runGreedySearchNID1( nodeID, numnodes, outdir )
 
 % setup for problem
  load HGpair400dim5.mat TAR
+ TAR=TAR(1:140,:);
  %load CompareTask1.mat Compare1
  %Compare=Compare1;
  Compare=ones(140,3)*1;
