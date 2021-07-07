@@ -1,18 +1,19 @@
-function [BP,a1,CC] = ParallelOneComp(PENSET,numcores,H,G,F,Q,m)
-
+function [BP,a1,CC] = ParallelOneComp(PENSET,numcores,H,G,F,Q,m, mesh,quan)
 % parallelize the computation of finding the best path from H to G on n=numcores nodes on one computer
 % BP is the best path, a1 is the cost of the best path.
 p = gcp();
-[sepPEN] = SepPEN1(PENSET, numcores);
-
+Pen= SepPEN(PENSET, numcores);
+CC=0;
+[Tra1, cost_store1, comp] = PreTest(H,G,F,m,Q);
 % to request multiple evaluations, use a loop
 for idx = 1:numcores
-  f(idx) = parfeval(p,@GeodesicAndCost1,6,H,G,sepPEN{idx},F,Q,m); % Square size determined by idx
+    sepPEN{idx}= PENset(Pen{idx},mesh);
+    pen{idx} = GeneratePEN1(sepPEN{idx}, G, F,m,Q, quan);
+    f(idx) = parfeval(p,@GeodesicAndCost2,6,H,G,pen{idx},F,Q,m,comp); % Square size determined by idx
 end
 
 % collect the results as they become available.
 Results = cell(numcores,5);
-CC=0;
 %tic
 for idx = 1:numcores
   % fetchNext blocks until next results are available.
@@ -24,11 +25,12 @@ for idx = 1:numcores
   Results{completedIdx,5} = Total_cost;
   Results{completedIdx,6} = Count;
   CC=CC+Count;
-  fprintf('retrieved result with index: %d.\n', completedIdx);
+  %fprintf('Got result with index: %d.\n', completedIdx);
 end
 %toc
 minlist=zeros(numcores,2);
 for i=1:numcores
+    
     [a, b]= min(Results{i,5}(1:(Results{i,6}-1)));
     minlist(i,:)=[a b];
 end
