@@ -8,8 +8,9 @@ CC=0;
 % to request multiple evaluations, use a loop
 
 for idx = 1:numcores
-    sepPEN{idx}= PENset(Pen{idx},mesh);
-    pen{idx} = GeneratePEN1(sepPEN{idx}, G, F,m,Q, quan);
+    %sepPEN{idx}= PENset(Pen{idx},mesh);
+    %pen{idx} = GeneratePEN1(sepPEN{idx}, G, F,m,Q, quan);
+    pen{idx} = GeneratePEN2(Pen{idx}, G, F,m,Q, mesh,quan);
     CC=CC+size(pen{idx},1);
     f(idx) = parfeval(p,@GeodesicAndCost2,6 ,H,G,pen{idx},F,Q,m,comp); % Square size determined by idx
 end
