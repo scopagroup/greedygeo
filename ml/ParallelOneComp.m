@@ -9,7 +9,7 @@ CC=0;
 for idx = 1:numcores
     sepPEN{idx}= PENset(Pen{idx},mesh);
     pen{idx} = GeneratePEN1(sepPEN{idx}, G, F,m,Q, quan);
-    f(idx) = parfeval(p,@GeodesicAndCost2,6,H,G,pen{idx},F,Q,m,comp); % Square size determined by idx
+    f(idx) = parfeval(p,@GeodesicAndCost2,6 ,H,G,pen{idx},F,Q,m,comp); % Square size determined by idx
 end
 
 % collect the results as they become available.
@@ -32,7 +32,11 @@ minlist=zeros(numcores,2);
 for i=1:numcores
     
     [a, b]= min(Results{i,5}(1:(Results{i,6}-1)));
+    if ~isempty(a)
     minlist(i,:)=[a b];
+    else
+        minlist(i,:)=[1000 1000];
+    end
 end
 [a1, b1]=min(minlist(:,1));
 
