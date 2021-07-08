@@ -10,7 +10,7 @@ CC=0;
 for idx = 1:numcores
     sepPEN{idx}= PENset(Pen{idx},mesh);
     pen{idx} = GeneratePEN1(sepPEN{idx}, G, F,m,Q, quan);
-    
+    CC=CC+size(pen{idx},1);
     f(idx) = parfeval(p,@GeodesicAndCost2,6 ,H,G,pen{idx},F,Q,m,comp); % Square size determined by idx
 end
 
@@ -26,7 +26,7 @@ for idx = 1:numcores
   Results{completedIdx,4} = COST1;
   Results{completedIdx,5} = Total_cost;
   Results{completedIdx,6} = Count;
-  CC=CC+Count;
+  %CC=CC+Count;
   %fprintf('Got result with index: %d.\n', completedIdx);
 end
 %toc
