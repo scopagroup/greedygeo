@@ -8,16 +8,16 @@ function runGreedySearchNID( nodeID, numnodes, outdir )
 
 % setup for problem
 
-g=7;
+g=5;
 opt=setup(g);
 F=opt.F;
 Q=opt.Q;
 m=opt.m;
 M=m*Q;
-%H=[0.8 0.05 0.05 0.05 0.05];
-%G=[0.1 0.1 0.2 0.5 0.1];
-H=[0.6, 0.1,0.1 0.05, 0.05, 0.05, 0.05];
-G=[0.1, 0.1, 0.1, 0.1,0.1 , 0.5, 0.1];
+H=[0.8 0.05 0.05 0.05 0.05];
+G=[0.1 0.1 0.2 0.5 0.1];
+%H=[0.6, 0.1,0.1 0.05, 0.05, 0.05, 0.05];
+%G=[0.1, 0.1, 0.1, 0.1,0.1 , 0.5, 0.1];
 mesh=0.01;
 PEN=[0.1 0.9;0.1 0.9;0.1 0.9;0.1 0.9;0.1 0.9;0.1 0.9];
 p= 0.1;
@@ -33,7 +33,7 @@ PENSET1= SepPEN(PEN, numnodes);
 fprintf('executing search on node %d\n', nodeID);
 [BP, cost_BP,Count] = ParallelOneComp(PENSET1{nodeID}, 10, H, G, F, Q, m, mesh, quan );
 % construct file name for output
-resultname = [outdir,'/','quan0.1result-for-node', num2str(nodeID) '.mat' ];
+resultname = [outdir,'/','dim5quan0.1result-for-node', num2str(nodeID) '.mat' ];
 
 % save to file
 save( resultname, 'BP', 'cost_BP', 'Count', 'time','H','G')
