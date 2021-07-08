@@ -6,9 +6,11 @@ Pen= SepPEN(PENSET, numcores);
 CC=0;
 [Tra1, cost_store1, comp] = PreTest(H,G,F,m,Q);
 % to request multiple evaluations, use a loop
+
 for idx = 1:numcores
     sepPEN{idx}= PENset(Pen{idx},mesh);
     pen{idx} = GeneratePEN1(sepPEN{idx}, G, F,m,Q, quan);
+    
     f(idx) = parfeval(p,@GeodesicAndCost2,6 ,H,G,pen{idx},F,Q,m,comp); % Square size determined by idx
 end
 
@@ -30,18 +32,20 @@ end
 %toc
 minlist=zeros(numcores,2);
 for i=1:numcores
-    
+    if ~isempty(Results{i,1})
     [a, b]= min(Results{i,5}(1:(Results{i,6}-1)));
-    if ~isempty(a)
     minlist(i,:)=[a b];
     else
         minlist(i,:)=[1000 1000];
     end
 end
-[a1, b1]=min(minlist(:,1));
+[a1, b1]=min(minlist(:,1))
 
 %fprintf('the best path from H to G is\n')
+if a1==1000
+    BP=[];
+else
 BP=Results{b1,3}{minlist(b1,2)}(end:-1:1,:);
-
+end
 end
 
