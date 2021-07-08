@@ -1,6 +1,7 @@
 function [Penulti] = GeneratePEN2(PEN,G,F,m,Q,mesh,quan)
 %UNTITLED7 Summary of this function goes here
 %   Detailed explanation goes here
+if size(PEN,1)>4
 pen=PEN;
 Penulti=[];
 for h1=PEN(1,1):mesh:PEN(1,2)
@@ -19,6 +20,11 @@ for h1=PEN(1,1):mesh:PEN(1,2)
         end
     end
 end
+else
+    SET=PENset(PEN,mesh);
+    Penulti= GeneratePEN1(SET,G,F,m,Q,quan);
+end
+              
                 
 end
 
