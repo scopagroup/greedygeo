@@ -1,7 +1,7 @@
 function [BP,a1,CC] = ParallelOneComp(PENSET,numcores,H,G,F,Q,m, mesh,quan)
 % parallelize the computation of finding the best path from H to G on n=numcores nodes on one computer
 % BP is the best path, a1 is the cost of the best path.
-p = gcp();
+
 Pen= SepPEN(PENSET, numcores);
 CC=0;
 [Tra1, cost_store1, comp] = PreTest(H,G,F,m,Q);
@@ -12,6 +12,14 @@ for idx = 1:numcores
     %pen{idx} = GeneratePEN1(sepPEN{idx}, G, F,m,Q, quan);
     pen{idx} = GeneratePEN2(Pen{idx}, G, F,m,Q, mesh,quan);
     CC=CC+size(pen{idx},1);
+    %f(idx) = parfeval(p,@GeodesicAndCost2,6 ,H,G,pen{idx},F,Q,m,comp); % Square size determined by idx
+end
+p = gcp();
+for idx = 1:numcores
+    %sepPEN{idx}= PENset(Pen{idx},mesh);
+    %pen{idx} = GeneratePEN1(sepPEN{idx}, G, F,m,Q, quan);
+    %pen{idx} = GeneratePEN2(Pen{idx}, G, F,m,Q, mesh,quan);
+    %CC=CC+size(pen{idx},1);
     f(idx) = parfeval(p,@GeodesicAndCost2,6 ,H,G,pen{idx},F,Q,m,comp); % Square size determined by idx
 end
 
