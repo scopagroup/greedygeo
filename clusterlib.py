@@ -43,7 +43,7 @@ def setDefaultParameters(compute_sys):
     parameters.setdefault('compute_sys', compute_sys);
 
     # set run time
-    parameters.setdefault('wtime_h', '10');
+    parameters.setdefault('wtime_h', '20');
     parameters.setdefault('wtime_m', '00');
 
     return parameters;
