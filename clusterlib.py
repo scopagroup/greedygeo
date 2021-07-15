@@ -11,7 +11,7 @@ def createCMD(nodeID,numnodes,opt):
     outDir = opt['output_directory'];
 
     cmd = 'matlab -nodesktop -nodisplay -nosplash';
-    cmd = cmd + ' -r \"setupML; runGreedySearchNID(';
+    cmd = cmd + ' -r \"setupML; runGreedySearchNID1(';
     cmd = cmd + str(nodeID) + ',' + str(numnodes);
     cmd = cmd + ',\'' + outDir +'\'); quit;\"'
 #    cmd = cmd + ' > ' + outDir + '/log.txt'
