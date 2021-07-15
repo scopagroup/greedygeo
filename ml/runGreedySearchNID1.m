@@ -7,12 +7,12 @@ function runGreedySearchNID1( nodeID, numnodes, outdir )
 %   nodeID      id of particular node
 
 % setup for problem
- load HGpair10000dim4.mat TAR
- TAR=TAR(3001:5000,:);
+ load HGpair2500dim4.mat TAR1
+ TAR=TAR1(1:1000,:);
  
  %load CompareTask1.mat Compare1
  %Compare=Compare1;
- Compare=ones(2000,3)*0.01;
+ Compare=ones(1000,3)*0.01;
  g=4;
  opt=setup(g);
  F=opt.F;
@@ -33,7 +33,7 @@ tic
 [Results] = ParallelOnTar(sepTAR{nodeID},10,F,Q,m,mesh,sepCom{nodeID});
     
 time=toc
-resultname = [outdir,'/','Quan0.01dim4pair2000-result-for-node', num2str(nodeID) '.mat' ];
+resultname = [outdir,'/','Quan0.01dim4pair1000-result-for-node', num2str(nodeID) '.mat' ];
 
 % save to file
 save( resultname, 'Results','F', 'time')
