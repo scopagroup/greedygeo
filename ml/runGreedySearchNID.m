@@ -26,7 +26,7 @@ mesh=0.03;
 %PEN=[0.005 0.5;0.005 0.5;0.005 0.5;0.005 0.5;0.005 0.5;0.005 0.5;0.25 0.6];
 %PEN=[0.005 0.25;0.005 0.25 ;0.005 0.25 ;0.005 0.25; 0.005 0.25; 0.005 0.5;0.25 0.6];
 PEN=[0.005 0.9;0.005 0.9;0.005 0.9;0.005 0.9;0.005 0.9;0.005 0.9;0.1 0.9 ];
-p= 0.01;
+p= 0.1;
 [quan] = Quan(G,g,F,m,Q,p);
 
 
@@ -40,7 +40,7 @@ fprintf('executing search on node %d\n', nodeID);
 [BP, cost_BP,Count] = ParallelOneComp(PENSET1{nodeID}, 16, H, G, F, Q, m, mesh, quan );
 time=toc;
 % construct file name for output
-resultname = [outdir,'/','dim8quan0.01result1-mesh0.03-for-node', num2str(nodeID) '.mat' ];
+resultname = [outdir,'/','dim8quan0.1result1-mesh0.03-for-node', num2str(nodeID) '.mat' ];
 
 % save to file
 save( resultname, 'BP', 'cost_BP', 'Count', 'time','H','G','mesh','PEN')
