@@ -48,12 +48,12 @@ while hkcost> eps && i<200000
     GeoCost=[GeoCost;sum(geocost)];
     i=i+1;
 end
-subplot(3,1,1)
-plot(HKcost)
-subplot(3,1,2)
-plot(GRDN)
-subplot(3,1,3)
-plot(GeoCost)
+%subplot(3,1,1)
+%plot(HKcost)
+%subplot(3,1,2)
+%plot(GRDN)
+%subplot(3,1,3)
+%plot(GeoCost)
 
 FGEO=geo;
 end
