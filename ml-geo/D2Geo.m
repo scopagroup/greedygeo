@@ -83,7 +83,7 @@ for s=1:g
         if l==s
             dbz=0;
             for k=1:g
-                dbz=-f(s,k)*Q(s,k)/y(s)-(F(s)+z(s)/y(s))*(Q(s,k)*DfZ(s,k,s))-F(k)*y(k)*Q(k,s)*f(k,s)/(F(s)*y(s)^2)-z(s)*F(k)*y(k)*Q(k,s)*DfZ(k,s,s)/(F(s)*y(s)^2);
+                dbz=dbz-f(s,k)*Q(s,k)/y(s)-(F(s)+z(s)/y(s))*(Q(s,k)*DfZ(s,k,s))-F(k)*y(k)*Q(k,s)*f(k,s)/(F(s)*y(s)^2)-z(s)*F(k)*y(k)*Q(k,s)*DfZ(k,s,s)/(F(s)*y(s)^2);
             end
             DbZ(s,l)=dbz;
         else
@@ -104,7 +104,7 @@ for s=1:g
     for k=1:g
         if k~=s
             alpha(s)=alpha(s)+Q(s,k)*e(s,k)-F(k)*X(k)*Q(k,s)*e(k,s)/(F(s)*X(s));
-            beta(s)=F(s)*Q(s,k)-(F(s)+z(s)/y(s))*f(s,k)*Q(s,k)-z(s)*F(k)*y(k)*Q(k,s)*f(k,s)/(f(s)*y(s)^2);
+            beta(s)=beta(s)+F(s)*Q(s,k)-(F(s)+z(s)/y(s))*f(s,k)*Q(s,k)-z(s)*F(k)*y(k)*Q(k,s)*f(k,s)/(f(s)*y(s)^2);
         end
     end
 end
