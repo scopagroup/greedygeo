@@ -51,7 +51,7 @@ for s=1:g
     for k=1:g
         for l=1:g-1
             if s==l
-                DeY(s,k,l)=e(s,k)*((-F(s)*hx(x)+y(s)*F(s)*DHXY(s,s))/(F(s)*hx(s))^2-y(k)*DHXY(k,s)/(F(k)*hx(k)^2));
+                DeY(s,k,l)=e(s,k)*((-F(s)*hx(s)+y(s)*F(s)*DHXY(s,s))/(F(s)*hx(s))^2-y(k)*DHXY(k,s)/(F(k)*hx(k)^2));
             elseif k==l
                 DeY(s,k,l)=e(s,k)*(y(s)*DHXY(s,k)/(F(s)*hx(s)^2)+(F(k)*hx(k)-y(k)*F(k)*DHXY(k,k))/(F(k)*hx(k)^2));
             else
@@ -71,7 +71,7 @@ for s=1:g
                     day=day+DeY(s,k,s)*Q(s,k)-Q(k,s)*F(k)*(e(k,s)*(DX(k,s)*X(s)-X(k)*DX(s,s))/X(s)^2+X(k)*DeY(k,s,s)/X(s));
                 end
             end
-            DaY(s,k,l)=day;
+            DaY(s,l)=day;
         else
             day=0;
             for k=1:g
@@ -79,7 +79,7 @@ for s=1:g
                     day=day+Q(s,k)*DeY(s,k,l)-F(k)*Q(k,s)*(e(k,s)*(DX(k,l)*X(s)-X(k)*DX(s,l))/X(s)^2+X(k)*DeY(k,s,l)/X(s));
                 end
             end
-            DaY(s,k,l)=day;
+            DaY(s,l)=day;
         end
     end
 end
@@ -122,7 +122,7 @@ for s=1:g
     for k=1:g
         if k~=s
             alpha(s)=alpha(s)+Q(s,k)*e(s,k)-F(k)*X(k)*Q(k,s)*e(k,s)/(F(s)*X(s));
-            beta(s)=F(s)*Q(s,k)-(F(s)+z(s)/y(s))*f(s,k)*Q(s,k)-z(s)*F(k)*y(k)*Q(k,s)*f(k,s)/(f(s)*y(s)^2);
+            beta(s)=beta(s)+F(s)*Q(s,k)-(F(s)+z(s)/y(s))*f(s,k)*Q(s,k)-z(s)*F(k)*y(k)*Q(k,s)*f(k,s)/(f(s)*y(s)^2);
         end
     end
 end
