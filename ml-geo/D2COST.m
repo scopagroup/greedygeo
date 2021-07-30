@@ -13,7 +13,7 @@ for l=1:g-1
     dss=0;
     for k=1:g-1
         if k~=l
-            dss=dss-m*Q(l,k)*U(k)/U(l)+ m*F(k)*H(k)*Q(k,l)*U(l)*/(U(k)*F(l)*H(l));
+            dss=dss-m*Q(l,k)*U(k)/U(l)+ m*F(k)*H(k)*Q(k,l)*U(l)/(U(k)*F(l)*H(l));
         end
     end
     for k=1:g-1
