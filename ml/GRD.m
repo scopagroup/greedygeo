@@ -13,7 +13,8 @@ for k=4:n
     DGY(:,:,k)=D1Geo(BG(k-1,:),BG(k-2,:),F,m,Q)*DGY(:,:,k-1)+D2Geo(BG(k-1,:),BG(k-2,:),F,m,Q)*DGY(:,:,k-2);
 end
 DKY= D1Geo(BG(n,:),BG(n-1,:),F,m,Q)*DGY(:,:,n)+D2Geo(BG(n,:),BG(n-1,:),F,m,Q)*DGY(:,:,n-1);
-grd=D2COST(H,K,F,m,Q)*DKY;
+%grd=D2COST(H,K,F,m,Q)*DKY;
+grd=-2*(H(1:g-1)-K(1:g-1))*DKY;
 
 end
 
