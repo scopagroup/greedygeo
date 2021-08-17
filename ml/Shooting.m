@@ -31,7 +31,7 @@ HKcost=[hkcost];
 GeoCost=[comp];
 GeoCost1=GeoCost;
 GRDN=[];
-while hkcost> eps && i<1000000
+while hkcost> eps && i<100000
     [grd] = GRD( H, BG, F, m, Q);
     
     Y(1:g-1)= Y(1:g-1)-para* grd;
