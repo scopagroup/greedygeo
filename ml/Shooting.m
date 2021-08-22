@@ -1,13 +1,13 @@
-function [FGEO] = Shooting(H,G,F,m,Q,eps)
+function [YY,GeoCost1] = Shooting(H,G,ST,Y,F,m,Q,eps)
 %UNTITLED6 Summary of this function goes here
 %   Detailed explanation goes here
-ST=7;
+%ST=6;
 g=size(H,2);
-S=sum(G./F);
-Z=G./(F*S);
+%S=sum(G./F);
+%Z=G./(F*S);
 %Y=[0.19 0.11 0.59 0.11];
-Y(1:g-1)=round(Z(1:g-1),3);
-Y(g)=1-sum(Y(1:g-1));
+%Y(1:g-1)=round(Z(1:g-1),3);
+%Y(g)=1-sum(Y(1:g-1));
 [f,df,BG] = objShooting( Y, H, G, F, m, Q, ST )
 objfun=@(Y) objShooting(Y, H,G,F,m,Q,ST)
 
@@ -85,6 +85,6 @@ title('Cost of geodesic')
 subplot(2,2,4)
 plot(distY)
 title('||Y_n-Y_{n-1}||')
-FGEO=geo;
+%FGEO=geo;
 end
 
