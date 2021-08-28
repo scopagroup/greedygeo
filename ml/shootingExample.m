@@ -14,6 +14,9 @@ Z=G./(F*S);
 
 Y(1:g-1)=round(Z(1:g-1),3);
 Y(g)=1-sum(Y(1:g-1));
+
 tic
-[YY,GeoCost1] = Shooting(H,G,ST,Y,F,m,Q,eps)
+
+[YY,GeoCost1] = Shooting(H,G,ST,Y,F,m,Q,eps);
+
 toc
