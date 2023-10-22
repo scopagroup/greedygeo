@@ -47,7 +47,7 @@ for s=1:g
             daz=0;
             for k=1:g
                 if k~=s
-                    daz=daz+Q(s,k)*DEZ(s,k,s)-F(k)*X(k)*Q(k,s)*(DEZ(k,s,s)*X(s)-e(k,s)*DX(s,s)/(F(s)*X(s)^2));
+                    daz=daz+Q(s,k)*DEZ(s,k,s)-F(k)*X(k)*Q(k,s)*(DEZ(k,s,s)*X(s)-e(k,s)*DX(s,s))/(F(s)*X(s)^2);
                 end
             end
             DaZ(s,l)=daz;
